@@ -1,73 +1,128 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot,faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const toggleAboutDropdown = () => {
+    setIsAboutDropdownOpen(!isAboutDropdownOpen);
+  };
+
   return (
     <div>
-    <header className="mx-auto ">
-      {/* Info Bar */}
-      {/* <div className=" p-3">
-        <ul className="flex justify-between">
+      <header className="mx-auto">
+        {/* Main Navigation */}
+        <div className="bg-blue-500 p-7 px-10">
+          <nav className="flex justify-between items-center" aria-label="Main Navigation">
+            {/* Logo */}
+            <div className="text-white">
+              <h1 className="font-bold text-3xl">Developer</h1>
+            </div>
 
+            {/* Mobile Menu Button */}
+            <button
+              className="sm:hidden text-white focus:outline-none"
+              onClick={toggleMenu}
+              aria-label="Toggle Navigation Menu"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2976/2976215.png"  // Hamburger icon URL
+                alt="Menu Icon"
+                width={25}
+                height={25}
+              />
+            </button>
 
-          <li className="hover:cursor-pointer text-lg md:text-3xl"><FontAwesomeIcon icon={faLocationDot} flip style={{color: "#ed3535",}} className="text-red-500"/> Vellore</li>
-          <li className="hover:cursor-pointer text-lg md:text-3xl"><FontAwesomeIcon icon={faPhone} style={{color: "#FFD43B",}}/> 123456789</li>
-          <li className="hover:cursor-pointer text-lg md:text-3xl"><FontAwesomeIcon icon={faEnvelope} style={{color: "#63E6BE",}}/> Bit@gmail.com</li>
-        </ul>
-      </div> */}
+            {/* Navigation Links */}
+            <ul className="hidden sm:flex gap-8 text-lg md:text-2xl z-20">
+              <Link to ={'/'} className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Home</Link>
+              <li className="relative cursor-pointer" onClick={toggleAboutDropdown}>
+                <div className="flex items-center hover:scale-110 transition-transform hover:text-white">
+                  About Us
+                  <FontAwesomeIcon icon={faChevronDown} className={`ml-2 transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isAboutDropdownOpen && (
+                  <ul className="absolute left-0 mt-2 w-40 bg-white text-black shadow-md rounded-md p-2">
+                    <li className="hover:bg-gray-200 p-2">Our Story</li>
+                    <li className="hover:bg-gray-200 p-2">Team</li>
+                    <li className="hover:bg-gray-200 p-2">Careers</li>
+                    <li className='hover:bg-gray-200 p-2'>
+                    <Link to={'About'} >About</Link>
+                    </li>
+                    
+                  </ul>
+                )}
+              </li>
+              <li className="relative cursor-pointer" onClick={toggleDropdown}>
+                <div className="flex items-center hover:scale-110 transition-transform hover:text-white">
+                  Author's Desk
+                  <FontAwesomeIcon icon={faChevronDown} className={`ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isDropdownOpen && (
+                  <ul className="absolute left-0 mt-2 w-40 bg-white text-black shadow-md rounded-md p-2">
+                    <li className="hover:bg-gray-200 p-2">Blog</li>
+                    <li className="hover:bg-gray-200 p-2">Books</li>
+                    <li className="hover:bg-gray-200 p-2">Interviews</li>
+                  </ul>
+                )}
+              </li>
+              <Link to={'Contact_us'} className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Contact Us</Link>
+            </ul>
 
-      {/* Main Navigation */}
-      <div className="bg-blue-400 p-7 px-10">
-        <nav className="flex justify-between items-center" aria-label="Main Navigation">
-          {/* Logo */}
-          <div>
-            <h1 className="font-bold md:text-3xl">Developer</h1>
-          </div>
+            {/* Mobile Navigation */}
+            <ul
+              className={`${
+                isMenuOpen ? 'block' : 'hidden'
+              } sm:hidden absolute left-0 right-0 top-15 bg-amber-200 p-3 text-lg md:text-2xl rounded-md`}
+            >
+              <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Home</li>
+              <li className="relative cursor-pointer" onClick={toggleAboutDropdown}>
+                <div className="flex items-center hover:scale-110 transition-transform hover:text-white">
+                  About Us
+                  <FontAwesomeIcon icon={faChevronDown} className={`ml-2 transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isAboutDropdownOpen && (
+                  <ul className="mt-2 bg-white text-black shadow-md rounded-md p-2">
+                    <li className="hover:bg-gray-200 p-2">Our Story</li>
+                    <li className="hover:bg-gray-200 p-2">Team</li>
+                    <li className="hover:bg-gray-200 p-2">Careers</li>
+                    <li className='hover:bg-gray-200 p-2'>
+                    <Link to={'About'} >About</Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+              <li className="relative cursor-pointer" onClick={toggleDropdown}>
+                <div className="flex items-center hover:scale-110 transition-transform hover:text-white">
+                  Author's Desk
+                  <FontAwesomeIcon icon={faChevronDown} className={`ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isDropdownOpen && (
+                  <ul className="mt-2 bg-white text-black shadow-md rounded-md p-2">
+                    <li className="hover:bg-gray-200 p-2">Blog</li>
+                    <li className="hover:bg-gray-200 p-2">Books</li>
+                    <li className="hover:bg-gray-200 p-2">Interviews</li>
+                  </ul>
+                )}
+              </li>
+              <Link to={'Contact_us'} className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Contact Us</Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="sm:hidden text-white focus:outline-none"
-            onClick={toggleMenu}
-            aria-label="Toggle Navigation Menu"
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2976/2976215.png"  // Hamburger icon URL
-              alt="Menu Icon"
-              width={15}
-              height={15}
-            />
-          </button>
-
-          {/* Navigation Links */}
-          <ul className={`hidden sm:flex gap-8 text-lg md:text-2xl`}>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Home</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">About Us</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Author's Desk</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Contact Us</li>
-          </ul>
-
-          {/* Mobile Navigation */}
-          <ul
-            className={`${
-              isMenuOpen ? 'block' : 'hidden'
-            } sm:hidden absolute left-0 right-0 top-15 bg-amber-200 p-3 text-lg md:text-2xl rounded-md`}
-          >
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Home</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">About Us</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Author's Desk</li>
-            <li className="hover:scale-110 transition-transform cursor-pointer hover:text-white">Contact Us</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+            </ul>
+          </nav>
+        </div>
+      </header>
     </div>
   );
 }
-

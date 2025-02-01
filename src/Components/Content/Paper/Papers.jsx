@@ -40,19 +40,19 @@ export default function Papers() {
   ];
 
   return (
-    <div className="max-w-full flex justify-center bg-gradient-to-r from-pink-100 to-yellow-100 px-4"style={{background: "",backgroundImage: "", fontFamily: "Poppins, sans-serif" }}>
+    <div className="max-w-full flex justify-center bg-gradient-to-r from-white to-yellow-100 px-4"style={{background: "",backgroundImage: "", fontFamily: "Poppins, sans-serif" }}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-xl ">
         {/* Call for papers - spans 2 rows, 1 column */}
         <div className="row-span-3 col-span-1 p-8 gap-4 flex flex-col justify-center">
-          <h1 className="text-6xl font-bold">
-            Call for papers
+          <h1 className="text-6xl font-bold underline">
+            Call for <span className='text-red-800'>papers</span>
           </h1>
         </div>
 
         {/* Description - spans 1 row, 2 columns */}
         <div className="col-span-2 row-span-1 gap-4 p-7">
-          <p className="text-lg">
-            ICARCSIT is the premier forum for the presentation of new advances and research results in the fields of Advanced Research in Computer Science and Information Technology. The conference will bring together leading academic scientists, researchers, and scholars in the domain of interest from around the world. Topics of interest for submission include, but are not limited to:
+          <p className="text-lg text-justify">
+            <span className="text-red-800 font-bold ">"ICARCSIT"</span> is the premier forum for the presentation of new advances and research results in the fields of Advanced Research in Computer Science and Information Technology. The conference will bring together leading academic scientists, researchers, and scholars in the domain of interest from around the world. Topics of interest for submission include, but are not limited to:
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Content_1 from '../Content/Content_1';
 import Papers from '../Content/Paper/Papers';
+import EventCard from '../Events/EventCard';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         </div>
         <Content_1/>
         <Papers/>
+        <EventCard/>
     </div>
   );
 }

@@ -1,35 +1,51 @@
-import React from 'react';
+import React from "react";
 
-export default function Content_1() {
+const Content_1 = () => {
   return (
-    <div className="mx-auto p-8 max-w-7xl" style={{ fontFamily: "Poppins, sans-serif" }}>
-      {/* Title Section */}
-      {/* <div className="flex  items-center ">
-        <h1 className="text-7xl font-bold text-center underline"style={{ fontFamily: "Poppins, sans-serif" }}>About</h1>
-      </div> */}
+    <section className="about_section layout_padding">
+      <div className="container mx-auto px-6 lg:px-20 py-12 lg:py-20">
+        <div className="flex flex-col lg:flex-row justify-center items-center">
+          
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2 px-4 lg:px-0 flex justify-center lg:justify-end">
+            <div className="img_container">
+              <div className="img-box">
+                <img
+                  src="/Images/Home/business-8676529_1920.jpg"
+                  alt="About"
+                  className="w-full lg:w-[950px] h-auto lg:h-[390px] object-cover rounded-lg shadow-md"
+                />
+              </div>
+            </div>
+          </div>
 
-      {/* Two-Column Content Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left Content */}
-        <div>
-        <h1 className="text-7xl font-bold underline mb-4">About</h1>
-          <p className="text-lg leading-relaxed mb-4">
-            International Conference on Advanced Research in Computer Science and Information Technology (ICARCSIT) will be held at Pondicherry, India, on 28th Jan 2025. ICARCSIT is hosted by ASAR-India.
-            The ICARCSIT conference offers a track of quality R&D updates from key experts and provides an opportunity to bring in new techniques and horizons that will contribute to advanced research in science, engineering, and technology.
-            All submitted papers will undergo peer review, and accepted papers will be published in the conference proceedings. Both academia and industries are invited to present their research on state-of-the-art developments.
-          </p>
-        </div>
+          {/* Text Section */}
+          <div className="w-full lg:w-1/2 px-4 lg:px-0 mt-6 lg:mt-0">
+            <div className="detail-box bg-white p-6 md:p-8 shadow-lg relative lg:-ml-12">
+              <div className="heading_container">
+                <h2 className="font-bold text-3xl md:text-5xl text-center lg:text-left">
+                  Who Are We?
+                </h2>
+              </div>
+              <p className="mt-4 text-lg md:text-2xl text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.
+              </p>
+              <div className="btn-box mt-6 flex justify-center lg:justify-start">
+                <a
+                  href="#"
+                  className="inline-block py-2 px-6 md:px-8 bg-yellow-400 text-white border border-transparent uppercase text-sm md:text-base font-semibold hover:bg-transparent hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300"
+                >
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
 
-        {/* Right Image */}
-        <div className="flex justify-center">
-          <img
-            src="\Images\Cover_img\chairs-2181994_1920.jpg"
-            alt="Conference"
-            className="rounded-xl shadow-lg max-w-full"
-          />
         </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
 
+export default Content_1;
+ 
